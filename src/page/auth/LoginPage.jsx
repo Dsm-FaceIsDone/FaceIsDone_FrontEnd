@@ -1,6 +1,6 @@
-import { Main, Face } from "../assets";
+import { Main, Face } from "../../assets";
 import styled from "styled-components";
-import Input from "../components/Input";
+import Input from "../../components/Input";
 
 const LoginPage = () => {
   return (
