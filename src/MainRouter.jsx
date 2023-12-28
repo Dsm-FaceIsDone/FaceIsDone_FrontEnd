@@ -1,8 +1,9 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import SignupPage from "./page/SignupPage";
-import LoginPage from "./page/LoginPage";
-import NotpostPage from "./page/NotPostPage";
-import NotFoundPage from "./page/NotFoundPage";
+import SignupPage from "./page/auth/SignupPage";
+import LoginPage from "./page/auth/LoginPage";
+import NotpostPage from "./page/auth/NotPostPage";
+import NotFoundPage from "./page/auth/NotFoundPage";
+import MainPage from "./page/main/mainPage";
 
 function MainRouter() {
   return (
@@ -12,6 +13,7 @@ function MainRouter() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/notpost" element={<NotpostPage />} />
         <Route path="/notfound" element={<NotFoundPage />} />
+        <Route path="/mainPage" element={<MainPage />} />
       </Routes>
     </BrowserRouter>
   );
