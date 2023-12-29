@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NotFound } from "../assets";
+import { NotFound } from "../../assets";
 
 const NotFoundPage = () => {
   return (

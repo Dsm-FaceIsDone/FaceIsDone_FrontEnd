@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import Sidebar from "../components/Sidebar";
-import MyProfile from "../components/MyProfile";
-import { NoPost } from "../assets";
+import Sidebar from "../../components/Sidebar";
+import MyProfile from "../../components/MyProfile";
 
 const NotpostPage = () => {
   return (
     <Container>
       <Sidebar />
-      <Center>
-        <Img src={NoPost} alt="게시물이 없습니다" />
-      </Center>
+      <Center></Center>
       <MyProfile />
     </Container>
   );
@@ -17,11 +14,6 @@ const NotpostPage = () => {
 
 const Container = styled.div`
   display: flex;
-`;
-
-const Img = styled.img`
-  width: 275px;
-  height: 278px;
 `;
 
 const Center = styled.div`
