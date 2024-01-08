@@ -1,7 +1,25 @@
 import styled from "styled-components";
-import { Logo, Home, Plus, Notice, MyPost, MyEdit, Heart } from "../assets";
+import {
+  Logo,
+  Home,
+  Plus,
+  Notice,
+  MyPost,
+  MyEdit,
+  Heart,
+  Logout,
+} from "../assets";
 
 const SidebarPage = () => {
+  const bar = [
+    { logo: Home, name: "집으로 돌아가기" },
+    { logo: Plus, name: "사진 들이밀기" },
+    { logo: Notice, name: "통보" },
+    { logo: MyPost, name: "나의 게시물" },
+    { logo: MyEdit, name: "나의 합성작품" },
+    { logo: Heart, name: "흡족스러움" },
+    { logo: Logout, name: "로그아웃" },
+  ];
   return (
     <Container>
       <Sidebar>
@@ -10,30 +28,12 @@ const SidebarPage = () => {
           <Ment>원하는 사진을 올리고 웃긴 사진을 만들어보세요!</Ment>
         </LogoWrapper>
         <Wrapper>
-          <IconWrapper>
-            <PageLogo src={Home} alt="홈 아이콘" />
-            <Name>집으로 돌아가기</Name>
-          </IconWrapper>
-          <IconWrapper>
-            <PageLogo src={Plus} alt="추가 아이콘" />
-            <Name>사진 들이밀기</Name>
-          </IconWrapper>
-          <IconWrapper>
-            <PageLogo src={Notice} alt="공지 아이콘" />
-            <Name>통보</Name>
-          </IconWrapper>
-          <IconWrapper>
-            <PageLogo src={MyPost} alt="내 게시물 아이콘" />
-            <Name>나의 게시물</Name>
-          </IconWrapper>
-          <IconWrapper>
-            <PageLogo src={MyEdit} alt="내 합성작 아이콘" />
-            <Name>나의 합성작품</Name>
-          </IconWrapper>
-          <IconWrapper>
-            <PageLogo src={Heart} alt="좋아요 아이콘" />
-            <Name>흡족스러움</Name>
-          </IconWrapper>
+          {bar.map((element) => (
+            <IconWrapper key={element.logo}>
+              <PageLogo src={element.logo} />
+              <Name>{element.name}</Name>
+            </IconWrapper>
+          ))}
         </Wrapper>
       </Sidebar>
     </Container>
@@ -59,6 +59,7 @@ const LogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-left: 90px;
 `;
 
 const LogoImg = styled.img`
