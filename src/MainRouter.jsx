@@ -12,6 +12,7 @@ function MainRouter() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/notpost" element={<NotpostPage />} />
         <Route path="/notfound" element={<NotFoundPage />} />
+        <Route path="/mainPage" element={<MainPage />} />
       </Routes>
     </BrowserRouter>
   );
