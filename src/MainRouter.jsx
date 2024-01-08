@@ -3,7 +3,6 @@ import SignupPage from "./page/auth/SignupPage";
 import LoginPage from "./page/auth/LoginPage";
 import NotpostPage from "./page/auth/NotPostPage";
 import NotFoundPage from "./page/auth/NotFoundPage";
-import MainPage from "./page/main/mainPage";
 
 function MainRouter() {
   return (

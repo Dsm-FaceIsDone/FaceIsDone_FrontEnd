@@ -1,6 +1,6 @@
-import { Main, Face } from "../assets";
+import { Main, Face } from "../../assets";
 import styled from "styled-components";
-import Input from "../components/Input";
+import Input from "../../components/Input";
 
 const SignupPage = () => {
   return (
@@ -37,7 +37,7 @@ const Container = styled.div``;
 const MainImg = styled.img`
   position: relative;
   width: 100%;
-  height: 923px;
+  height: 907px;
 `;
 
 const SignupWrapper = styled.div`
@@ -92,7 +92,7 @@ const Wrapper = styled.div`
 const FaceImg = styled.img`
   position: absolute;
   top: 690px;
-  left: 1640px;
+  left: 1653px;
 `;
 
 const SignupButton = styled.div`
