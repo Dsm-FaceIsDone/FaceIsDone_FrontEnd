@@ -10,3 +10,5 @@ export { default as MyEdit } from "./img/MyEdit.png";
 export { default as Heart } from "./img/Heart.png";
 export { default as Profile } from "./img/Profile.png";
 export { default as NotFound } from "./img/NotFound.png";
+export { default as Johyunmin } from "./img/Johyunmin.png";
+export { default as Johyunmin1 } from "./img/Johyunmin1.png";

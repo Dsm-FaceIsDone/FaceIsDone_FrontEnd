@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as CreatePhoto } from "../assets/img/CreatePhoto.svg";
 
-export default function NewCreateModalFirst() {
+export default function NewCreatePostFirst() {
   return (
     <>
       <Container>

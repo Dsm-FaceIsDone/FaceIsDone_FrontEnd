@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Johyunmin } from "../assets";
+import { Johyunmin1 } from "../assets";
 import { ReactComponent as Profile } from "../assets/img/Profile.svg";
 import { ReactComponent as Setting } from "../assets/img/Setting.svg";
-import { ReactComponent as Like } from "../assets/img/Like.svg";
-import { ReactComponent as Letter } from "../assets/img/Letter.svg";
 
-export default function Post() {
+export default function Comment() {
   return (
     <>
       <Container>
@@ -19,20 +17,7 @@ export default function Post() {
             </User>
             <Setting />
           </Header>
-          <Content>
-            <ContentText>이거 전데요, 합성좀 해주세요</ContentText>
-            <Photo src={Johyunmin}></Photo>
-            <BtnContainer>
-              <BtnBackGround>
-                <Like />
-                <BtnText>120개의 흡족함</BtnText>
-              </BtnBackGround>
-              <BtnBackGround>
-                <Letter />
-                <BtnText>1990개의 작품 보러가기</BtnText>
-              </BtnBackGround>
-            </BtnContainer>
-          </Content>
+          <Photo src={Johyunmin1}></Photo>
         </PostContainer>
       </Container>
     </>
@@ -79,40 +64,9 @@ const UserId = styled.p`
   line-height: 22px;
 `;
 
-const Content = styled.div``;
-
-const ContentText = styled.p`
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-`;
-
 const Photo = styled.img`
   background-color: gray;
   width: 520px;
   height: 550px;
-  margin: 10px 0px;
-`;
-
-const BtnContainer = styled.div`
-  display: flex;
-`;
-
-const BtnBackGround = styled.div`
-  border-radius: 10px;
-  background: #ededed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  margin: 0px 10px 0px 0px;
-  width: auto;
-  height: 25px;
-`;
-
-const BtnText = styled.p`
-  font-size: 15px;
-  font-weight: 400;
-  margin: 0px 7px;
+  border-radius: 16px;
 `;
