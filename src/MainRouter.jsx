@@ -3,7 +3,8 @@ import SignupPage from "./page/auth/SignupPage";
 import LoginPage from "./page/auth/LoginPage";
 import NotpostPage from "./page/auth/NotPostPage";
 import NotFoundPage from "./page/auth/NotFoundPage";
-
+import MainPage from "./page/main/mainPage";
+import ChooseImgPage from "./page/auth/ChooseImgPage";
 function MainRouter() {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ function MainRouter() {
         <Route path="/notpost" element={<NotpostPage />} />
         <Route path="/notfound" element={<NotFoundPage />} />
         <Route path="/mainPage" element={<MainPage />} />
+        <Route path="/chooseImg" element={<ChooseImgPage />} />
       </Routes>
     </BrowserRouter>
   );

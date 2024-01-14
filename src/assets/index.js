@@ -10,3 +10,4 @@ export { default as MyEdit } from "./img/MyEdit.png";
 export { default as Heart } from "./img/Heart.png";
 export { default as Profile } from "./img/Profile.png";
 export { default as NotFound } from "./img/NotFound.png";
+export { default as BackGround } from "./img/BackGround.png";
