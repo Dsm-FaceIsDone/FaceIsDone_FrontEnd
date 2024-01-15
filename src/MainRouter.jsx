@@ -5,6 +5,8 @@ import NotpostPage from "./page/auth/NotPostPage";
 import NotFoundPage from "./page/auth/NotFoundPage";
 import MainPage from "./page/main/mainPage";
 import ChooseImgPage from "./page/auth/ChooseImgPage";
+import SkeinPage from "./page/main/SkeinPage";
+
 function MainRouter() {
   return (
     <BrowserRouter>
@@ -15,6 +17,8 @@ function MainRouter() {
         <Route path="/notfound" element={<NotFoundPage />} />
         <Route path="/mainPage" element={<MainPage />} />
         <Route path="/chooseImg" element={<ChooseImgPage />} />
+        <Route path="/skeinPage" element={<SkeinPage />} />
+
       </Routes>
     </BrowserRouter>
   );

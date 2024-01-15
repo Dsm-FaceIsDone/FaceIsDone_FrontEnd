@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as LeftArrow } from "../assets/img/LeftArrow.svg";
 import { ReactComponent as SmallProfile } from "../assets/img/SmallProfile.svg";
 
-export default function NewCreateModalLast() {
+export default function NewCreatePostLast() {
   return (
     <>
       <Container>
