@@ -1,162 +1,142 @@
+import {useState} from "react";
 import styled from "styled-components";
+import axios from "axios";
 import { ReactComponent as Arrow } from "../../assets/img/Arrow.svg";
-import { BackGround, Face } from "../../assets";
+import BackGround from "../../assets/img/BackGround.png";
+import NoImg from "../../assets/img/NoImg.png"
+import LoginBtn from "../../components/LoginBtn";
 
-function ChooseImgPage() {
+export default function ChooseImgPage() {
+
+  const [previewImg, setPreviewImg] = useState(NoImg);
+
+  const basicImg = (e) => {
+      if(previewImg) {
+          setPreviewImg(NoImg)
+      }
+  }
+
+  const insertImg = (e) => {
+      const file = e.target.files[0]
+
+      let reader = new FileReader()
+      if(file) {
+          reader.readAsDataURL(file);
+      }
+
+      reader.onloadend = () => {
+          const previewImgUrl = reader.result
+          if(previewImgUrl) {
+              setPreviewImg(previewImgUrl)
+          }
+      }
+  }
+
+  const LoginClick = async() => {
+    try {
+      await axios.post(
+        `http://43.203.92.26:8080/user/profileImage/{userId}`,
+        {
+          image : previewImg
+        }
+      )
+      console.log(previewImg)
+    } catch(error) {
+      alert(error.response.data.message)
+    }
+  }
+  
+
+
   return (
+  <Container>
     <Container>
-      <BackImg src={BackGround} />
       <ChooseImgWrapper>
-        <Text>프로필 이미지를 설정해주세요.</Text>
-        <PhotoWrapper>
-          <ProfileImg>
-            <p>프로필 사진</p>
-          </ProfileImg>
-          <Rignt>
-            <StartWrapper>
-              <div>
-                <Start>
-                  <StartText>기본 이미지 프로필로 시작하기</StartText>
-                  <Arrow />
-                </Start>
-                <Line></Line>
-              </div>
-              <div>
-                <Start>
-                  <StartText>프로필 사진 업로드 하기</StartText>
-                  <Arrow />
-                </Start>
-                <Line></Line>
-              </div>
-            </StartWrapper>
-            <FaceImg src={Face} alt="얼다" />
-            <UploadButton>
-              <User>
-                <Name>모시깽이</Name>
-                <Id>hyunmin_jo</Id>
-              </User>
-              <Ment>사진이 업로드 되었다면? 로그인 하러가기</Ment>
-            </UploadButton>
-          </Rignt>
-        </PhotoWrapper>
+        <Title>프로필 이미지를 설정해주세요</Title>
+        
+          <ProfileSetting>
+
+            <Img src={previewImg} />
+
+            <Setting>
+              <PhotoSelect>
+                <Label onClick={(e) => basicImg(e)}>
+                  <div>기본 이미지 프로필로 변경하기</div>
+                  <Arrow/>
+                  </Label>
+                <Label htmlFor="file">
+                    <div>프로필 사진 업로드하기</div>
+                    <Arrow/>
+                </Label>
+                <Input type="file" name="file" accept="image/*" onChange={(e) => insertImg(e)}/>
+                </PhotoSelect>
+                <LoginBtn onClick={LoginClick}/>
+            </Setting>
+            
+          </ProfileSetting>
+
       </ChooseImgWrapper>
     </Container>
+  </Container>
   );
 }
 
-const Container = styled.div``;
-
-const BackImg = styled.img`
-  position: relative;
-  width: 100%;
-  height: 907px;
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-image: url(${BackGround});
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const ChooseImgWrapper = styled.div`
-  position: absolute;
+  width: 1000px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 85px;
-  width: 1000px;
-  height: 650px;
+  gap: 60px;
   background-color: #ffffff;
   border-radius: 20px;
-  top: 180px;
-  left: 460px;
+  margin: auto;
 `;
 
-const Text = styled.p`
+const Title = styled.p`
   font-size: 35px;
   font-weight: 400;
 `;
 
-const PhotoWrapper = styled.div`
-  display: flex;
-  gap: 57px;
-`;
+const ProfileSetting = styled.div`
+width: 845px;
+height: 400px;
+display: flex;
+justify-content: space-between;
+`
 
-const Rignt = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 270px;
-`;
+const Img = styled.img`
+width: 400px;
+height: 400px;
+`
 
-const ProfileImg = styled.div`
-  width: 400px;
-  height: 400px;
-  background-color: #eeeeee;
-  > p {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-const StartWrapper = styled.div`
+const Setting = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 250px;
 `;
 
-const StartText = styled.p`
-  width: 230px;
-  font-size: 17px;
-  font-weight: 400;
-`;
+const PhotoSelect = styled.div``
 
-const Line = styled.div`
-  width: 375px;
-  height: 3px;
-  background-color: black;
-`;
+const Label = styled.label`
+display: flex;
+justify-content: space-between;
+width: 375px;
+padding: 0 10px 0 0;
+border-bottom: solid 3px black;
+margin-bottom: 25px;
+font-size: 17px;
+`
 
-const Start = styled.div`
-  display: flex;
-  gap: 130px;
-`;
-
-const FaceImg = styled.img`
-  position: absolute;
-  width: 32px;
-  height: 36px;
-  top: 530px;
-  left: 880px;
-`;
-
-const UploadButton = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const User = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-`;
-
-const Name = styled.p`
-  font-size: 20px;
-  font-weight: 400;
-  margin-left: 160px;
-`;
-
-const Id = styled.p`
-  font-size: 12px;
-  font-weight: 400;
-  margin-top: 5px;
-`;
-
-const Ment = styled.p`
-  color: #818181;
-  text-align: right;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 2.8px;
-`;
-
-export default ChooseImgPage;
+const Input = styled.input`
+//display: none;
+`

@@ -1,8 +1,53 @@
-import { Main, Face } from "../../assets";
+import { useState } from "react";
 import styled from "styled-components";
+import axios from "axios"
+import { useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
+import { Main, Face } from "../../assets";
 
-const SignupPage = () => {
+/**
+ * 
+ * @return 회원가입
+ */
+
+export default function SignupPage () {
+  
+  const navigate = useNavigate("") 
+
+  const [inputData, setInputData] = useState({
+    userId : "",
+    userPassword : "",
+    nickName : ""
+  })
+
+  const {userId, userPassword, nickName} = inputData;
+
+  const inputChange = (e) => {
+    const {name, value} = e.target;
+    setInputData({
+      ...inputData,
+      [name] : value
+    })
+  }
+
+  const signUpClick = async() => {
+    try{
+      const response = await axios.post(
+        `http://43.203.92.26:8080/user/signup`,
+        {
+          nickName,
+          userId,
+          userPassword
+        }
+      )
+      navigate("/chooseImg")
+      return response
+    }
+    catch(error) {
+      alert(error.response.data.message)
+    }
+  }
+
   return (
     <Container>
       <MainImg src={Main} alt="메인" />
@@ -11,33 +56,36 @@ const SignupPage = () => {
         <Wrapper>
           <IdWrapper>
             <Id>아 이 디</Id>
-            <Input />
+            <Input name="userId" value={userId} onChange={(e) => inputChange(e)}/>
           </IdWrapper>
           <PwWrapper>
             <PassWord>비 밀 번 호</PassWord>
-            <Input />
+            <Input type="password" name="userPassword" value={userPassword} onChange={(e) => inputChange(e)} />
           </PwWrapper>
           <NicknameWrapper>
             <NickName>별 명</NickName>
-            <Input />
+            <Input name="nickName" value={nickName} onChange={(e) => inputChange(e)}/>
           </NicknameWrapper>
         </Wrapper>
       </SignupWrapper>
-      <FaceImg src={Face} alt="얼다" />
-      <SignupButton>
+      <FaceImg src={Face} alt="얼다" onClick={signUpClick}/>
+      <SignupButton onClick={signUpClick}>
         <Button>서명 : 얼굴이 다했다 ( 인 )</Button>
         <Welcome>얼굴이 다했다에 오신 모두들 환영합니다</Welcome>
       </SignupButton>
     </Container>
   );
-};
+}
 
-const Container = styled.div``;
+const Container = styled.div`
+  width : 100%;
+  height : 100%;
+`;
 
 const MainImg = styled.img`
   position: relative;
   width: 100%;
-  height: 907px;
+  height: 100%;
 `;
 
 const SignupWrapper = styled.div`
@@ -114,6 +162,5 @@ const Welcome = styled.p`
   font-size: 20px;
   color: #818181;
   letter-spacing: 7px;
-`;
+`
 
-export default SignupPage;
